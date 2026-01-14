@@ -6,223 +6,158 @@
     <title>Intelligence OS | Legal & Scientific Sovereign</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #030712; --card: #0f172a; --gold: #d4af37; --text: #f8fafc; --dim: #94a3b8; --accent: #1e293b; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; overflow-x: hidden; }
-        .container { width: 95%; max-width: 1300px; padding: 40px 0; }
+        :root { --bg: #020617; --card: #0f172a; --gold: #d4af37; --text: #f8fafc; --dim: #94a3b8; --accent: #1e293b; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; }
+        .container { width: 95%; max-width: 1200px; padding: 40px 0; }
         
-        /* Premium Header */
-        header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; border-bottom: 1px solid var(--accent); padding-bottom: 30px; }
-        .logo-area h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0; color: var(--gold); letter-spacing: -1px; }
-        .streak-box { text-align: right; background: var(--card); padding: 15px 25px; border-radius: 12px; border: 1px solid var(--gold); }
-        .streak-num { font-size: 2.5rem; font-weight: 700; color: var(--gold); display: block; line-height: 1; }
+        header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; border-bottom: 1px solid var(--accent); padding-bottom: 20px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0; color: var(--gold); }
+        .streak-box { text-align: right; border-left: 1px solid var(--accent); padding-left: 20px; }
+        .streak-num { font-size: 2.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+
+        /* News Section - Priority One */
+        .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+        .news-section { background: var(--card); border-radius: 12px; padding: 25px; border-left: 4px solid var(--gold); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+        h2 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
         
-        /* Real-Time News Sections */
-        .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
-        .news-section { background: var(--card); border-radius: 16px; padding: 30px; border-top: 4px solid var(--gold); }
-        h2 { font-family: 'Playfair Display', serif; color: var(--gold); margin-top: 0; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
-        .feed-list { margin-top: 20px; }
-        .feed-item { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #1e293b; animation: slideIn 0.5s ease; }
-        .feed-item a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 1.05rem; display: block; line-height: 1.4; }
+        .feed-list { margin-top: 15px; min-height: 200px; }
+        .feed-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #1e292a; transition: 0.2s; }
+        .feed-item a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.95rem; line-height: 1.4; display: block; }
         .feed-item a:hover { color: var(--gold); }
-        .feed-date { font-size: 0.7rem; color: var(--dim); text-transform: uppercase; margin-top: 5px; display: block; }
+        .feed-meta { font-size: 0.7rem; color: var(--dim); margin-top: 4px; display: block; text-transform: uppercase; }
 
         /* Middle Section: The Vault */
-        .vault-container { background: var(--card); padding: 40px; border-radius: 20px; margin-bottom: 50px; border: 1px solid var(--accent); }
-        .vault-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
-        textarea, input { width: 100%; background: var(--bg); color: white; border: 1px solid var(--accent); border-radius: 8px; padding: 15px; margin-bottom: 15px; font-family: inherit; }
+        .vault-container { background: var(--card); padding: 30px; border-radius: 12px; margin-bottom: 40px; }
+        .vault-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        textarea, input { width: 100%; background: var(--bg); color: white; border: 1px solid var(--accent); border-radius: 6px; padding: 12px; margin-bottom: 10px; font-family: inherit; box-sizing: border-box;}
         
-        /* Bottom: Implementation Habits */
-        .habit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .habit-card { background: var(--card); padding: 25px; border-radius: 12px; border-bottom: 3px solid transparent; transition: 0.3s; }
-        .habit-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .habit-check { display: flex; align-items: center; cursor: pointer; }
-        input[type="checkbox"] { width: 22px; height: 22px; margin-right: 15px; accent-color: var(--gold); }
-
-        /* Notifications */
-        #toast { position: fixed; bottom: 20px; right: 20px; background: var(--gold); color: var(--bg); padding: 15px 25px; border-radius: 8px; font-weight: 700; display: none; }
-
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 900px) { .news-grid, .vault-grid, .habit-grid { grid-template-columns: 1fr; } }
+        /* Bottom: Habits */
+        .habit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .habit-card { background: var(--card); padding: 20px; border-radius: 8px; border: 1px solid var(--accent); display: flex; align-items: center; }
+        .habit-card input { width: 20px; height: 20px; margin: 0 15px 0 0; accent-color: var(--gold); cursor: pointer; }
+        
+        .auth-btn { background: var(--gold); color: var(--bg); border: none; padding: 20px; border-radius: 8px; font-weight: 800; cursor: pointer; width: 100%; margin-top: 20px; font-size: 1rem; letter-spacing: 1px; }
+        .auth-btn:hover { filter: brightness(1.1); }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <div class="logo-area">
-            <div style="color: var(--dim); letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase;">The Sovereign Intellectual</div>
+        <div>
+            <div style="color: var(--dim); letter-spacing: 2px; font-size: 0.7rem;">INTELLIGENCE OS</div>
             <h1>Cognitive Prime</h1>
         </div>
         <div class="streak-box">
-            <span class="streak-num" id="streakVal">0</span>
-            <span style="font-size: 0.7rem; color: var(--dim); letter-spacing: 1px;">ACTIVE STREAK</span>
+            <span class="streak-num" id="streakVal">0</span><br>
+            <span style="font-size: 0.7rem; color: var(--dim);">CURRENT STREAK</span>
         </div>
     </header>
 
     <div class="news-grid">
         <div class="news-section">
             <h2>⚖️ Legal Intelligence</h2>
-            <div id="legal-feed" class="feed-list">Loading live legal headlines...</div>
+            <div id="legal-feed" class="feed-list">Fetching live Law Society headlines...</div>
         </div>
         <div class="news-section">
-            <h2>🔬 Science & Behavior</h2>
-            <div id="science-feed" class="feed-list">Loading scientific breakthroughs...</div>
+            <h2>🔬 Human & Science</h2>
+            <div id="science-feed" class="feed-list">Fetching scientific behavioral data...</div>
         </div>
     </div>
 
     <div class="vault-container">
         <div class="vault-grid">
             <div>
-                <h2 style="border:none">Non-Fiction Vault</h2>
-                <p style="color:var(--dim)">Synthesize your reading. Extract the <i>Ratio Decidendi</i> of the day.</p>
+                <h2>Non-Fiction Vault</h2>
                 <input type="text" id="bookTitle" placeholder="Book Title...">
-                <textarea id="insightInput" placeholder="What is the one concept you must never forget from today's session?"></textarea>
-                <button onclick="saveInsight()" style="width:100%; background:var(--gold); color:var(--bg); border:none; padding:15px; border-radius:8px; font-weight:700; cursor:pointer;">DEPOSIT INSIGHT</button>
+                <textarea id="insightInput" placeholder="Synthesize one complex idea from today's reading..."></textarea>
+                <button onclick="saveInsight()" style="background:var(--accent); color:var(--gold); border:1px solid var(--gold); padding:10px; width:100%; cursor:pointer; font-weight:bold;">DEPOSIT INSIGHT</button>
             </div>
-            <div style="background:var(--bg); padding:20px; border-radius:10px; border:1px dashed var(--gold);">
-                <span style="color:var(--gold); font-size: 0.7rem; letter-spacing: 1px;">LAST SECURED KNOWLEDGE:</span>
-                <div id="displayInsight" style="margin-top:15px; font-size:1.1rem; line-height:1.6; font-style:italic; color:var(--dim)">No insights logged yet.</div>
+            <div style="border: 1px dashed var(--gold); padding: 20px; border-radius: 8px;">
+                <span style="color:var(--gold); font-size: 0.7rem; letter-spacing: 1px;">MEMORIZED KNOWLEDGE:</span>
+                <div id="displayInsight" style="margin-top:10px; font-size:1rem; color:var(--dim); font-style:italic;">Vault empty.</div>
             </div>
         </div>
     </div>
 
-    <h2 style="margin-bottom:20px;">Habit Implementation</h2>
+    <h2>Daily Implementation</h2>
     <div class="habit-grid">
-        <div class="habit-card">
-            <label class="habit-check">
-                <input type="checkbox" class="task-check">
-                <div>
-                    <strong>Music Mastery</strong>
-                    <div style="font-size:0.8rem; color:var(--dim)">60m dedicated practice/theory.</div>
-                </div>
-            </label>
-        </div>
-        <div class="habit-card">
-            <label class="habit-check">
-                <input type="checkbox" class="task-check">
-                <div>
-                    <strong>Non-Fiction Depth</strong>
-                    <div style="font-size:0.8rem; color:var(--dim)">45m reading + Vault deposit.</div>
-                </div>
-            </label>
-        </div>
-        <div class="habit-card">
-            <label class="habit-check">
-                <input type="checkbox" class="task-check">
-                <div>
-                    <strong>The Kinetic Reset</strong>
-                    <div style="font-size:0.8rem; color:var(--dim)">10m walk immediately post-lunch.</div>
-                </div>
-            </label>
-        </div>
-        <div class="habit-card">
-            <label class="habit-check">
-                <input type="checkbox" class="task-check">
-                <div>
-                    <strong>Media Cleanse</strong>
-                    <div style="font-size:0.8rem; color:var(--dim)">Zero Reels/TikTok/Short-form content.</div>
-                </div>
-            </label>
-        </div>
-        <div class="habit-card">
-            <label class="habit-check">
-                <input type="checkbox" class="task-check">
-                <div>
-                    <strong>Legal Briefing</strong>
-                    <div style="font-size:0.8rem; color:var(--dim)">Analyzed the top 3 headlines above.</div>
-                </div>
-            </label>
-        </div>
-        <div class="habit-card" style="background:var(--gold); color:var(--bg); display:flex; align-items:center; justify-content:center;">
-            <button onclick="updateStreak()" style="background:transparent; color:var(--bg); font-weight:900; border:none; width:100%; cursor:pointer;">AUTHENTICATE DAY</button>
-        </div>
+        <div class="habit-card"><input type="checkbox" class="task-check"> 60m Music Mastery</div>
+        <div class="habit-card"><input type="checkbox" class="task-check"> 45m Non-Fiction Depth</div>
+        <div class="habit-card"><input type="checkbox" class="task-check"> Kinetic Reset (Lunch Walk)</div>
+        <div class="habit-card"><input type="checkbox" class="task-check"> Media Cleanse (No Reels)</div>
+        <div class="habit-card"><input type="checkbox" class="task-check"> Analyze News Briefing</div>
     </div>
+    <button class="auth-btn" onclick="updateStreak()">AUTHENTICATE CALENDAR DAY</button>
 
-    <div id="toast">Day Authenticated. Streak Increased.</div>
-
-    <footer>
-        <div style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--gold); text-align: center; margin-top:50px;">
-            "The law is a profession of words; use them wisely."
-        </div>
-        <div style="font-size: 0.8rem; color: var(--dim); margin-top: 8px; text-align: center;">— David Mellinkoff, <i>The Language of the Law</i> (1963)</div>
+    <footer style="text-align:center; margin-top:50px; padding-bottom:50px;">
+        <div style="font-family: 'Playfair Display', serif; font-style:italic; color:var(--gold);">"The law is a profession of words; use them wisely."</div>
+        <div style="font-size:0.7rem; color:var(--dim); margin-top:10px;">— David Mellinkoff, 1963</div>
     </footer>
 </div>
 
 <script>
-    // RSS NEWS FEED LOGIC (Using RSS2JSON)
-    async function fetchNews(url, elementId) {
-        const proxy = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
-        try {
-            const response = await fetch(proxy);
-            const data = await response.json();
-            const container = document.getElementById(elementId);
-            container.innerHTML = '';
-            
-            data.items.slice(0, 5).forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'feed-item';
-                div.innerHTML = `
-                    <a href="${item.link}" target="_blank">${item.title}</a>
-                    <span class="feed-date">${new Date(item.pubDate).toLocaleDateString()}</span>
-                `;
-                container.appendChild(div);
-            });
-        } catch (e) { console.error("News feed failed", e); }
+    // RSS FEEDS - Optimized for Live Headlines
+    async function loadNews() {
+        const feeds = [
+            { id: 'legal-feed', url: 'https://www.lawgazette.co.uk/62.rss' },
+            { id: 'science-feed', url: 'https://www.scientificamerican.com/behavior/feed/' }
+        ];
+
+        for (const feed of feeds) {
+            try {
+                // Using a reliable public RSS-to-JSON converter
+                const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`);
+                const data = await response = await res.json();
+                const container = document.getElementById(feed.id);
+                container.innerHTML = '';
+
+                data.items.slice(0, 5).forEach(item => {
+                    container.innerHTML += `
+                        <div class="feed-item">
+                            <a href="${item.link}" target="_blank">${item.title}</a>
+                            <span class="feed-meta">${item.categories[0] || 'Update'}</span>
+                        </div>
+                    `;
+                });
+            } catch (e) {
+                document.getElementById(feed.id).innerText = "Feed temporarily unavailable. Please refresh.";
+            }
+        }
     }
 
-    // STREAK LOGIC (Calendar-Day Restricted)
+    // STREAK LOGIC - Calendar Date Strict
     function updateStreak() {
-        const checks = document.querySelectorAll('.task-check');
-        const allDone = Array.from(checks).every(c => c.checked);
-        const lastDate = localStorage.getItem('lastCompletionDate');
         const today = new Date().toDateString();
+        const lastDate = localStorage.getItem('lastDate');
+        const allDone = Array.from(document.querySelectorAll('.task-check')).every(c => c.checked);
 
-        if (!allDone) {
-            alert("Complete all habits before authenticating the day.");
-            return;
-        }
+        if (!allDone) return alert("Complete all tasks first.");
+        if (lastDate === today) return alert("Already authenticated for today.");
 
-        if (lastDate === today) {
-            alert("Today's streak is already authenticated.");
-            return;
-        }
-
-        let currentStreak = parseInt(localStorage.getItem('streakValue') || 0);
-        currentStreak++;
-        localStorage.setItem('streakValue', currentStreak);
-        localStorage.setItem('lastCompletionDate', today);
-        
-        document.getElementById('streakVal').innerText = currentStreak;
-        showToast();
+        let streak = parseInt(localStorage.getItem('streak') || 0);
+        streak++;
+        localStorage.setItem('streak', streak);
+        localStorage.setItem('lastDate', today);
+        document.getElementById('streakVal').innerText = streak;
+        alert("Day Authenticated!");
     }
-
-    // INITIALIZATION
-    window.onload = () => {
-        fetchNews('https://www.lawgazette.co.uk/62.rss', 'legal-feed');
-        fetchNews('https://www.scientificamerican.com/behavior/feed/', 'science-feed');
-        document.getElementById('streakVal').innerText = localStorage.getItem('streakValue') || 0;
-        displayInsight();
-    };
 
     function saveInsight() {
-        const title = document.getElementById('bookTitle').value;
-        const note = document.getElementById('insightInput').value;
-        if(title && note) {
-            localStorage.setItem('storedInsight', `${title}: ${note}`);
-            displayInsight();
-        }
+        const text = document.getElementById('bookTitle').value + ": " + document.getElementById('insightInput').value;
+        localStorage.setItem('vaultNote', text);
+        displayInsight();
     }
 
     function displayInsight() {
-        document.getElementById('displayInsight').innerText = localStorage.getItem('storedInsight') || "No insights logged yet.";
+        document.getElementById('displayInsight').innerText = localStorage.getItem('vaultNote') || "Vault empty.";
     }
 
-    function showToast() {
-        const t = document.getElementById('toast');
-        t.style.display = 'block';
-        setTimeout(() => t.style.display = 'none', 3000);
-    }
+    window.onload = () => {
+        loadNews();
+        displayInsight();
+        document.getElementById('streakVal').innerText = localStorage.getItem('streak') || 0;
+    };
 </script>
-
 </body>
 </html>

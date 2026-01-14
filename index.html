@@ -3,142 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence OS | Music & Law</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Intelligence OS | Legal & Scientific Sovereign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --navy: #050a14; --gold: #d4af37; --slate: #a1a1aa; --white: #fafafa; --accent: #1e293b; --glass: rgba(255, 255, 255, 0.03); }
-        body { background: var(--navy); color: var(--white); font-family: 'Inter', sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; }
-        .container { width: 95%; max-width: 1200px; padding: 40px 0; }
+        :root { --bg: #030712; --card: #0f172a; --gold: #d4af37; --text: #f8fafc; --dim: #94a3b8; --accent: #1e293b; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; overflow-x: hidden; }
+        .container { width: 95%; max-width: 1300px; padding: 40px 0; }
         
-        /* Header & Streak */
-        header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 1px solid var(--accent); padding-bottom: 20px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0; color: var(--gold); }
-        .streak-badge { text-align: right; }
-        .streak-count { font-size: 3rem; font-family: 'Playfair Display', serif; color: var(--gold); line-height: 1; }
-        .streak-label { font-size: 0.7rem; letter-spacing: 2px; color: var(--slate); text-transform: uppercase; }
-
-        /* Grid */
-        .main-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 20px; }
-        .card { background: var(--glass); border-radius: 12px; padding: 25px; border: 1px solid rgba(212,175,55,0.1); height: fit-content; }
-        h2 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.3rem; margin-top: 0; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px; }
+        /* Premium Header */
+        header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; border-bottom: 1px solid var(--accent); padding-bottom: 30px; }
+        .logo-area h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0; color: var(--gold); letter-spacing: -1px; }
+        .streak-box { text-align: right; background: var(--card); padding: 15px 25px; border-radius: 12px; border: 1px solid var(--gold); }
+        .streak-num { font-size: 2.5rem; font-weight: 700; color: var(--gold); display: block; line-height: 1; }
         
-        /* Non-Fiction Vault */
-        .vault-input { width: 100%; background: #0f172a; color: white; border: 1px solid var(--accent); border-radius: 8px; padding: 12px; margin: 10px 0; box-sizing: border-box; }
-        .book-log { font-size: 0.9rem; font-style: italic; color: var(--slate); margin-top: 10px; border-left: 2px solid var(--gold); padding-left: 10px; }
+        /* Real-Time News Sections */
+        .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
+        .news-section { background: var(--card); border-radius: 16px; padding: 30px; border-top: 4px solid var(--gold); }
+        h2 { font-family: 'Playfair Display', serif; color: var(--gold); margin-top: 0; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .feed-list { margin-top: 20px; }
+        .feed-item { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #1e293b; animation: slideIn 0.5s ease; }
+        .feed-item a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 1.05rem; display: block; line-height: 1.4; }
+        .feed-item a:hover { color: var(--gold); }
+        .feed-date { font-size: 0.7rem; color: var(--dim); text-transform: uppercase; margin-top: 5px; display: block; }
 
-        /* Checklist */
-        .check-item { display: flex; align-items: center; margin: 18px 0; font-size: 1rem; }
-        input[type="checkbox"] { width: 18px; height: 18px; margin-right: 12px; accent-color: var(--gold); cursor: pointer; }
+        /* Middle Section: The Vault */
+        .vault-container { background: var(--card); padding: 40px; border-radius: 20px; margin-bottom: 50px; border: 1px solid var(--accent); }
+        .vault-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
+        textarea, input { width: 100%; background: var(--bg); color: white; border: 1px solid var(--accent); border-radius: 8px; padding: 15px; margin-bottom: 15px; font-family: inherit; }
+        
+        /* Bottom: Implementation Habits */
+        .habit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .habit-card { background: var(--card); padding: 25px; border-radius: 12px; border-bottom: 3px solid transparent; transition: 0.3s; }
+        .habit-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .habit-check { display: flex; align-items: center; cursor: pointer; }
+        input[type="checkbox"] { width: 22px; height: 22px; margin-right: 15px; accent-color: var(--gold); }
 
-        /* News Sections */
-        .news-link { display: block; color: var(--white); text-decoration: none; margin-bottom: 12px; padding: 10px; border-radius: 6px; background: rgba(255,255,255,0.02); font-size: 0.9rem; transition: 0.2s; }
-        .news-link:hover { background: rgba(212,175,55,0.1); color: var(--gold); }
-        .tag { font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 4px; }
+        /* Notifications */
+        #toast { position: fixed; bottom: 20px; right: 20px; background: var(--gold); color: var(--bg); padding: 15px 25px; border-radius: 8px; font-weight: 700; display: none; }
 
-        button { background: var(--gold); color: var(--navy); border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-weight: 700; width: 100%; transition: 0.3s; }
-        button:hover { filter: brightness(1.2); }
-
-        footer { text-align: center; margin-top: 60px; padding: 40px; opacity: 0.6; }
-        @media (max-width: 1000px) { .main-grid { grid-template-columns: 1fr; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 900px) { .news-grid, .vault-grid, .habit-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <div>
-            <div style="color: var(--slate); letter-spacing: 2px; font-size: 0.7rem; text-transform: uppercase;">Executive Dashboard</div>
+        <div class="logo-area">
+            <div style="color: var(--dim); letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase;">The Sovereign Intellectual</div>
             <h1>Cognitive Prime</h1>
         </div>
-        <div class="streak-badge">
-            <div class="streak-count" id="streakDisplay">0</div>
-            <div class="streak-label">Day Streak</div>
+        <div class="streak-box">
+            <span class="streak-num" id="streakVal">0</span>
+            <span style="font-size: 0.7rem; color: var(--dim); letter-spacing: 1px;">ACTIVE STREAK</span>
         </div>
     </header>
 
-    <div class="main-grid">
-        <div class="card">
-            <h2>Daily Discipline</h2>
-            <div class="check-item"><input type="checkbox" class="task" onchange="checkStreak()"> 1 Hour: Music Practice/Theory</div>
-            <div class="check-item"><input type="checkbox" class="task" onchange="checkStreak()"> 1 Hour: Non-Fiction Immersion</div>
-            <div class="check-item"><input type="checkbox" class="task" onchange="checkStreak()"> No Reels/Short-form Media</div>
-            <div class="check-item"><input type="checkbox" class="task" onchange="checkStreak()"> Post-Lunch 10m Kinetic Reset</div>
-            <div class="check-item"><input type="checkbox" class="task" onchange="checkStreak()"> Review 3 Legal Headlines</div>
-            <p id="streakMsg" style="font-size: 0.8rem; color: var(--gold); margin-top: 15px; display: none;">All tasks complete. Streak authenticated.</p>
+    <div class="news-grid">
+        <div class="news-section">
+            <h2>⚖️ Legal Intelligence</h2>
+            <div id="legal-feed" class="feed-list">Loading live legal headlines...</div>
         </div>
-
-        <div class="card">
-            <h2>The Insight Vault</h2>
-            <p style="font-size: 0.8rem; color: var(--slate);">Refine your thoughts. Don't just read; extract value.</p>
-            <input type="text" id="bookTitle" class="vault-input" placeholder="Book Title...">
-            <textarea id="insightInput" class="vault-input" style="height: 100px;" placeholder="What is the most interesting thing you learned in this session?"></textarea>
-            <button onclick="saveInsight()">Deposit Insight</button>
-            <div id="latestInsight" class="book-log">Your last insight will appear here...</div>
-        </div>
-
-        <div class="card">
-            <h2>Legal Intelligence</h2>
-            <a href="https://www.lawgazette.co.uk/" class="news-link" target="_blank"><span class="tag">Professional</span>Law Society Gazette</a>
-            <a href="https://www.legalcheek.com/" class="news-link" target="_blank"><span class="tag">Industry</span>Legal Cheek</a>
-            <a href="https://www.supremecourt.uk/news/" class="news-link" target="_blank"><span class="tag">Judiciary</span>UK Supreme Court</a>
-
-            <h2 style="margin-top: 30px;">Human & Science</h2>
-            <a href="https://www.scientificamerican.com/behavior/" class="news-link" target="_blank"><span class="tag">Behavior</span>Human Behavior Briefings</a>
-            <a href="https://www.nature.com/news" class="news-link" target="_blank"><span class="tag">Research</span>Nature: Daily Briefing</a>
-            <a href="https://www.quantamagazine.org/" class="news-link" target="_blank"><span class="tag">Theories</span>Quanta: Complexity & Logic</a>
+        <div class="news-section">
+            <h2>🔬 Science & Behavior</h2>
+            <div id="science-feed" class="feed-list">Loading scientific breakthroughs...</div>
         </div>
     </div>
 
+    <div class="vault-container">
+        <div class="vault-grid">
+            <div>
+                <h2 style="border:none">Non-Fiction Vault</h2>
+                <p style="color:var(--dim)">Synthesize your reading. Extract the <i>Ratio Decidendi</i> of the day.</p>
+                <input type="text" id="bookTitle" placeholder="Book Title...">
+                <textarea id="insightInput" placeholder="What is the one concept you must never forget from today's session?"></textarea>
+                <button onclick="saveInsight()" style="width:100%; background:var(--gold); color:var(--bg); border:none; padding:15px; border-radius:8px; font-weight:700; cursor:pointer;">DEPOSIT INSIGHT</button>
+            </div>
+            <div style="background:var(--bg); padding:20px; border-radius:10px; border:1px dashed var(--gold);">
+                <span style="color:var(--gold); font-size: 0.7rem; letter-spacing: 1px;">LAST SECURED KNOWLEDGE:</span>
+                <div id="displayInsight" style="margin-top:15px; font-size:1.1rem; line-height:1.6; font-style:italic; color:var(--dim)">No insights logged yet.</div>
+            </div>
+        </div>
+    </div>
+
+    <h2 style="margin-bottom:20px;">Habit Implementation</h2>
+    <div class="habit-grid">
+        <div class="habit-card">
+            <label class="habit-check">
+                <input type="checkbox" class="task-check">
+                <div>
+                    <strong>Music Mastery</strong>
+                    <div style="font-size:0.8rem; color:var(--dim)">60m dedicated practice/theory.</div>
+                </div>
+            </label>
+        </div>
+        <div class="habit-card">
+            <label class="habit-check">
+                <input type="checkbox" class="task-check">
+                <div>
+                    <strong>Non-Fiction Depth</strong>
+                    <div style="font-size:0.8rem; color:var(--dim)">45m reading + Vault deposit.</div>
+                </div>
+            </label>
+        </div>
+        <div class="habit-card">
+            <label class="habit-check">
+                <input type="checkbox" class="task-check">
+                <div>
+                    <strong>The Kinetic Reset</strong>
+                    <div style="font-size:0.8rem; color:var(--dim)">10m walk immediately post-lunch.</div>
+                </div>
+            </label>
+        </div>
+        <div class="habit-card">
+            <label class="habit-check">
+                <input type="checkbox" class="task-check">
+                <div>
+                    <strong>Media Cleanse</strong>
+                    <div style="font-size:0.8rem; color:var(--dim)">Zero Reels/TikTok/Short-form content.</div>
+                </div>
+            </label>
+        </div>
+        <div class="habit-card">
+            <label class="habit-check">
+                <input type="checkbox" class="task-check">
+                <div>
+                    <strong>Legal Briefing</strong>
+                    <div style="font-size:0.8rem; color:var(--dim)">Analyzed the top 3 headlines above.</div>
+                </div>
+            </label>
+        </div>
+        <div class="habit-card" style="background:var(--gold); color:var(--bg); display:flex; align-items:center; justify-content:center;">
+            <button onclick="updateStreak()" style="background:transparent; color:var(--bg); font-weight:900; border:none; width:100%; cursor:pointer;">AUTHENTICATE DAY</button>
+        </div>
+    </div>
+
+    <div id="toast">Day Authenticated. Streak Increased.</div>
+
     <footer>
-        <div style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--gold);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--gold); text-align: center; margin-top:50px;">
             "The law is a profession of words; use them wisely."
         </div>
-        <div style="font-size: 0.8rem; color: var(--slate); margin-top: 8px;">— David Mellinkoff, <i>The Language of the Law</i> (1963)</div>
+        <div style="font-size: 0.8rem; color: var(--dim); margin-top: 8px; text-align: center;">— David Mellinkoff, <i>The Language of the Law</i> (1963)</div>
     </footer>
 </div>
 
 <script>
-    // STREAK LOGIC
-    let streak = localStorage.getItem('dayStreak') || 0;
-    let lastCompletionDate = localStorage.getItem('lastDate');
-    document.getElementById('streakDisplay').innerText = streak;
-
-    function checkStreak() {
-        const tasks = document.querySelectorAll('.task');
-        const allDone = Array.from(tasks).every(t => t.checked);
-        const today = new Date().toDateString();
-
-        if (allDone && lastCompletionDate !== today) {
-            streak++;
-            localStorage.setItem('dayStreak', streak);
-            localStorage.setItem('lastDate', today);
-            document.getElementById('streakDisplay').innerText = streak;
-            document.getElementById('streakMsg').style.display = 'block';
-        }
+    // RSS NEWS FEED LOGIC (Using RSS2JSON)
+    async function fetchNews(url, elementId) {
+        const proxy = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
+        try {
+            const response = await fetch(proxy);
+            const data = await response.json();
+            const container = document.getElementById(elementId);
+            container.innerHTML = '';
+            
+            data.items.slice(0, 5).forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'feed-item';
+                div.innerHTML = `
+                    <a href="${item.link}" target="_blank">${item.title}</a>
+                    <span class="feed-date">${new Date(item.pubDate).toLocaleDateString()}</span>
+                `;
+                container.appendChild(div);
+            });
+        } catch (e) { console.error("News feed failed", e); }
     }
 
-    // INSIGHT VAULT LOGIC
+    // STREAK LOGIC (Calendar-Day Restricted)
+    function updateStreak() {
+        const checks = document.querySelectorAll('.task-check');
+        const allDone = Array.from(checks).every(c => c.checked);
+        const lastDate = localStorage.getItem('lastCompletionDate');
+        const today = new Date().toDateString();
+
+        if (!allDone) {
+            alert("Complete all habits before authenticating the day.");
+            return;
+        }
+
+        if (lastDate === today) {
+            alert("Today's streak is already authenticated.");
+            return;
+        }
+
+        let currentStreak = parseInt(localStorage.getItem('streakValue') || 0);
+        currentStreak++;
+        localStorage.setItem('streakValue', currentStreak);
+        localStorage.setItem('lastCompletionDate', today);
+        
+        document.getElementById('streakVal').innerText = currentStreak;
+        showToast();
+    }
+
+    // INITIALIZATION
+    window.onload = () => {
+        fetchNews('https://www.lawgazette.co.uk/62.rss', 'legal-feed');
+        fetchNews('https://www.scientificamerican.com/behavior/feed/', 'science-feed');
+        document.getElementById('streakVal').innerText = localStorage.getItem('streakValue') || 0;
+        displayInsight();
+    };
+
     function saveInsight() {
         const title = document.getElementById('bookTitle').value;
         const note = document.getElementById('insightInput').value;
-        if (title && note) {
-            const entry = `${title.toUpperCase()}: "${note}"`;
-            localStorage.setItem('lastInsight', entry);
+        if(title && note) {
+            localStorage.setItem('storedInsight', `${title}: ${note}`);
             displayInsight();
-            document.getElementById('bookTitle').value = '';
-            document.getElementById('insightInput').value = '';
         }
     }
 
     function displayInsight() {
-        const saved = localStorage.getItem('lastInsight');
-        if (saved) {
-            document.getElementById('latestInsight').innerText = saved;
-        }
+        document.getElementById('displayInsight').innerText = localStorage.getItem('storedInsight') || "No insights logged yet.";
     }
 
-    // Initialize
-    displayInsight();
+    function showToast() {
+        const t = document.getElementById('toast');
+        t.style.display = 'block';
+        setTimeout(() => t.style.display = 'none', 3000);
+    }
 </script>
 
 </body>

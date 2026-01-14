@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence OS | Elite Edition</title>
+    <title>Intelligence OS | Deep-Dive Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #05070a; --card: #0f172a; --gold: #d4af37; --text: #f8fafc; --dim: #94a3b8; --accent: #1e293b; }
@@ -23,18 +23,21 @@
         .news-item { padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.03); margin-bottom: 10px; border-left: 3px solid var(--gold); }
         .news-item a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: block; }
 
-        /* Academy & Socratic */
+        /* Academy & Socratic Content Styling */
         .academy-item { background: var(--accent); border-radius: 8px; margin-bottom: 15px; border: 1px solid transparent; }
-        .academy-header { padding: 15px; font-weight: 700; color: var(--gold); cursor: pointer; display: flex; justify-content: space-between; }
-        .academy-content { padding: 15px; display: none; color: var(--dim); border-top: 1px solid rgba(255,255,255,0.05); line-height: 1.6; }
+        .academy-header { padding: 15px; font-weight: 700; color: var(--gold); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .academy-content { padding: 20px; display: none; color: var(--text); border-top: 1px solid rgba(212,175,55,0.2); line-height: 1.8; font-size: 0.95rem; }
+        .academy-content strong { color: var(--gold); }
+        .case-tag { font-size: 0.7rem; background: var(--gold); color: var(--bg); padding: 2px 6px; border-radius: 3px; margin-right: 10px; }
 
-        /* Vault Formatting */
+        /* Vault Styling (FIXED WHITE BOX) */
+        .vault-input { width: 100%; background: #0a1120; color: white; border: 1px solid var(--accent); padding: 15px; border-radius: 8px; font-family: inherit; margin-bottom: 15px; box-sizing: border-box; outline: none; }
+        .vault-input:focus { border-color: var(--gold); }
         .vault-display { margin-top: 20px; padding: 20px; background: var(--bg); border-radius: 8px; border: 1px solid var(--gold); }
         .vault-title { color: var(--gold); font-weight: 700; font-size: 1.1rem; border-bottom: 1px solid var(--accent); padding-bottom: 5px; margin-bottom: 10px; }
-        .vault-text { font-style: italic; color: var(--text); }
-
-        /* Buttons */
-        .refresh-btn { font-size: 0.7rem; background: var(--gold); color: var(--bg); border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: 800; }
+        
+        .refresh-btn { font-size: 0.75rem; background: var(--gold); color: var(--bg); border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: 800; transition: 0.2s; }
+        .refresh-btn:hover { filter: brightness(1.2); }
         .auth-btn { background: var(--gold); color: var(--bg); border: none; width: 100%; padding: 20px; border-radius: 10px; font-weight: 900; cursor: pointer; }
         
         @media (max-width: 1000px) { .main-grid, .news-grid { grid-template-columns: 1fr; } }
@@ -45,73 +48,71 @@
 <div class="container">
     <header>
         <div>
-            <div style="color: var(--dim); letter-spacing: 3px; font-size: 0.7rem;">POLYMATH INTELLIGENCE</div>
+            <div style="color: var(--dim); letter-spacing: 3px; font-size: 0.7rem;">THE SOVEREIGN INTELLECTUAL</div>
             <h1>Cognitive Prime</h1>
         </div>
         <div class="timer-box">
             <div id="update-timer">00:00:00</div>
-            <div style="font-size: 0.6rem; letter-spacing: 1px;">UNTIL DATA RESET</div>
+            <div style="font-size: 0.6rem; letter-spacing: 1px;">SYSTEM REFRESH</div>
         </div>
     </header>
 
     <div class="main-grid">
         <div class="left-col">
             <div class="card">
-                <h2>Intelligence Briefing <button class="refresh-btn" onclick="location.reload()">REFRESH</button></h2>
+                <h2>Intelligence Briefing <button class="refresh-btn" onclick="location.reload()">SYNC FEEDS</button></h2>
                 <div class="news-grid">
                     <div>
                         <h3 style="font-size:0.8rem; color:var(--dim);">⚖️ LEGAL DIRECTORY</h3>
-                        <div class="news-item"><a href="https://www.lawgazette.co.uk/news" target="_blank">Law Gazette: Daily News</a></div>
-                        <div class="news-item"><a href="https://www.supremecourt.uk/news/index.html" target="_blank">Supreme Court Decisions</a></div>
-                        <div class="news-item"><a href="https://www.thelawyer.com/" target="_blank">The Lawyer: Commercial Awareness</a></div>
-                        <div class="news-item"><a href="https://www.legalcheek.com/" target="_blank">Legal Cheek: Education News</a></div>
-                        <div class="news-item"><a href="https://www.judiciary.uk/judgments/" target="_blank">Courts and Tribunals Judgments</a></div>
+                        <div class="news-item"><a href="https://www.lawgazette.co.uk/news" target="_blank">Law Gazette: Latest News</a></div>
+                        <div class="news-item"><a href="https://www.supremecourt.uk/news/index.html" target="_blank">Supreme Court Media Centre</a></div>
+                        <div class="news-item"><a href="https://www.thelawyer.com/" target="_blank">The Lawyer: Global Market</a></div>
+                        <div class="news-item"><a href="https://www.judiciary.uk/judgments/" target="_blank">Latest High Court Judgments</a></div>
                     </div>
                     <div>
                         <h3 style="font-size:0.8rem; color:var(--dim);">🔬 SCIENTIFIC DISCOVERY</h3>
-                        <div class="news-item"><a href="https://www.nature.com/news" target="_blank">Nature: Research Journal</a></div>
-                        <div class="news-item"><a href="https://www.scientificamerican.com/behavior/" target="_blank">Behavioral Science Briefings</a></div>
+                        <div class="news-item"><a href="https://www.scientificamerican.com/behavior/" target="_blank">Behavioral Science</a></div>
                         <div class="news-item"><a href="https://www.quantamagazine.org/" target="_blank">Quanta: Mathematical Logic</a></div>
-                        <div class="news-item"><a href="https://phys.org/" target="_blank">Phys.org: Science News</a></div>
+                        <div class="news-item"><a href="https://www.nature.com/news" target="_blank">Nature: Research Journal</a></div>
                         <div class="news-item"><a href="https://www.newscientist.com/" target="_blank">New Scientist Updates</a></div>
                     </div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>Legal Academy <button class="refresh-btn" onclick="rotateAcademy()">NEW CONCEPT</button></h2>
+                <h2>The Legal Academy <button class="refresh-btn" onclick="rotateAcademy()">NEXT CASE</button></h2>
                 <div id="academy-container">
                     </div>
             </div>
 
             <div class="card" style="border: 1px solid var(--gold);">
                 <h2>Socratic Challenge</h2>
-                <p id="socratic-question" style="font-style:italic; font-size:1.1rem;"></p>
-                <div id="socratic-answer" style="display:none; padding-top:15px; border-top: 1px solid var(--accent); color:var(--dim);"></div>
-                <button class="refresh-btn" style="margin-top:15px;" onclick="toggleSocratic()">EXPLORE LOGIC</button>
+                <p id="socratic-question" style="font-style:italic; font-size:1.15rem; color: var(--gold);"></p>
+                <div id="socratic-answer" style="display:none; padding:20px; background: rgba(212,175,55,0.05); border-radius: 8px; margin-top:15px; line-height:1.7;"></div>
+                <button class="refresh-btn" style="margin-top:15px;" onclick="toggleSocratic()">REVEAL DIALECTIC</button>
             </div>
         </div>
 
         <div class="right-col">
             <div class="card">
-                <h2>Habit Authentication</h2>
-                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Music Undergraduate Work</div>
-                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Non-Fiction Reading (1hr)</div>
-                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Kinetic Reset (Lunch Walk)</div>
-                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> No Reels / Social Media</div>
+                <h2>Daily Discipline</h2>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> 60m Music Mastery</div>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> 60m Non-Fiction Depth</div>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Post-Lunch Kinetic Reset</div>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Media Cleanse (Zero Reels)</div>
                 <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Intelligence Hub Briefing</div>
-                <button class="auth-btn" onclick="authDay()">AUTHENTICATE STREAK</button>
-                <div style="text-align:center; margin-top:10px; font-weight:bold; color:var(--gold);">STREAK: <span id="streakCount">0</span></div>
+                <button class="auth-btn" onclick="authDay()">AUTHENTICATE DAY</button>
+                <div style="text-align:center; margin-top:15px; font-weight:700; color:var(--gold); font-size:1.2rem;">STREAK: <span id="streakCount">0</span></div>
             </div>
 
             <div class="card">
                 <h2>Insight Vault</h2>
-                <input type="text" id="vault-title-input" placeholder="Book Title...">
-                <textarea id="vault-note-input" style="width:100%; height:80px; background:var(--bg); color:white; border:1px solid var(--accent); padding:10px;" placeholder="Core Insight..."></textarea>
-                <button class="refresh-btn" style="width:100%; padding:10px; margin-top:10px;" onclick="saveVault()">DEPOSIT TO VAULT</button>
+                <input type="text" id="v-title" class="vault-input" placeholder="Book/Source Title...">
+                <textarea id="v-note" class="vault-input" style="height:100px;" placeholder="What is the 'Ratio' of your learning today? Synthesize it here..."></textarea>
+                <button class="refresh-btn" style="width:100%; padding:15px;" onclick="saveVault()">SECURE IN VAULT</button>
                 <div id="vault-output" class="vault-display" style="display:none;">
                     <div id="out-title" class="vault-title"></div>
-                    <div id="out-text" class="vault-text"></div>
+                    <div id="out-text" class="vault-text" style="font-size: 0.95rem; line-height: 1.5;"></div>
                 </div>
             </div>
         </div>
@@ -120,22 +121,42 @@
 
 <script>
     const academyData = [
-        { title: "R v Dudley and Stephens (1884)", content: "The leading case on the defense of 'Necessity'. Two sailors killed and ate a cabin boy to survive a shipwreck. The court ruled that necessity is not a defense to murder. Precedent: You cannot take a life to save your own." },
-        { title: "The Rule of Law", content: "A principle defined by A.V. Dicey. It states that no one is above the law, and that legal principles should be clear, publicized, and stable. This prevents arbitrary government power." },
-        { title: "Equity and Trusts", content: "Equity was developed to soften the 'harshness' of Common Law. It follows the maxim 'Equity will not suffer a wrong to be without a remedy.' Crucial for understanding modern property law." },
-        { title: "Contract: Carlill v Carbolic Smoke Ball Co", content: "Established that an advertisement can constitute an 'offer' if it is specific enough, and that 'acceptance' can be by conduct (using the smoke ball). It defined the elements of a binding contract." }
+        { 
+            title: "R v Dudley and Stephens (1884)", 
+            content: "<strong>The Facts:</strong> Two sailors were stranded at sea for weeks. Facing starvation, they killed and ate the cabin boy. They argued that their survival made the act a 'necessity.'<br><br><strong>The Ruling:</strong> The court rejected the defense of necessity for murder. Lord Coleridge CJ stated that to admit such a defense would be to 'mark the absolute divorce of law from morality.'<br><br><strong>Key takeaway for MA Law:</strong> This case established that the value of human life is absolute in English law. You cannot weigh one life against another as a matter of legal utility. It is the foundational case for the <b>Absolutist</b> perspective in Criminal Law."
+        },
+        { 
+            title: "Donoghue v Stevenson [1932]", 
+            content: "<strong>The Facts:</strong> Mrs. Donoghue drank ginger beer containing a decomposed snail. She sued the manufacturer, despite having no contract with them (her friend bought the drink).<br><br><strong>The Ruling:</strong> Lord Atkin formulated the <b>'Neighbour Principle'</b>: 'You must take reasonable care to avoid acts or omissions which you can reasonably foresee would be likely to injure your neighbour.'<br><br><strong>Impact:</strong> This single case birthed the modern Law of Negligence. It moved the law from a 'buyer beware' (Caveat Emptor) model to one of manufacturer responsibility. As a future lawyer, this is your primary reference for Duty of Care."
+        },
+        { 
+            title: "Miller v Prime Minister [2019]", 
+            content: "<strong>The Facts:</strong> The PM (Boris Johnson) advised the Queen to prorogue (suspend) Parliament for 5 weeks during the Brexit deadline. Claimants argued this was an abuse of power.<br><br><strong>The Ruling:</strong> The Supreme Court ruled the prorogation was <b>Unlawful</b> and void. They held that the PM's advice had the effect of frustrating Parliament’s ability to carry out its constitutional functions.<br><br><strong>Constitutional Significance:</strong> This case re-asserted the principle of <b>Parliamentary Sovereignty</b> and showed that the Executive branch is not above judicial review when it oversteps constitutional boundaries."
+        },
+        { 
+            title: "Carlill v Carbolic Smoke Ball Co [1893]", 
+            content: "<strong>The Facts:</strong> A company advertised a product that claimed to prevent flu, offering £100 to anyone who caught flu after using it. Mrs. Carlill used it, caught flu, and sued for the £100. The company claimed the ad was a 'mere puff' (not a real offer).<br><br><strong>The Ruling:</strong> The court found for Mrs. Carlill. They ruled that the ad was a <b>Unilateral Contract</b> offer to the whole world, and her performance of the conditions constituted acceptance.<br><br><strong>Why it matters:</strong> It defines the difference between an 'Invitation to Treat' and a 'Binding Offer.' Essential for Contract Law modules."
+        }
     ];
 
     const socraticData = [
-        "Is an unjust law still a law? (Think about Natural Law vs. Legal Positivism).",
-        "If an AI creates a piece of music, who owns the copyright: The coder, the AI, or the user?",
-        "Can freedom of speech truly exist if it causes psychological harm to others?"
+        { 
+            q: "Should a judge follow a law that is technically 'valid' but morally 'evil'?", 
+            a: "<strong>The Legal Positivist view:</strong> Yes. If the law was made by the correct authority through the correct process, it is valid regardless of morality. This ensures stability.<br><br><strong>The Natural Law view:</strong> No. An unjust law is not a law at all (<i>Lex iniusta non est lex</i>). Law must be rooted in objective morality to have authority over a citizen." 
+        },
+        { 
+            q: "If a self-driving car must choose between killing its passenger or five pedestrians, who is liable?", 
+            a: "<strong>Manufacturer Liability:</strong> Should the coder be blamed for a 'predetermined' death? This challenges the core of <b>Tort Law</b> (Product Liability).<br><br><strong>User Liability:</strong> If the user is not in control, can they possess <i>Mens Rea</i> (a guilty mind)? This is the cutting edge of AI law you will encounter in 2026." 
+        },
+        { 
+            q: "Can a person 'consent' to being physically harmed in a sporting match or a private setting?", 
+            a: "<strong>Public Policy:</strong> English law (see <i>R v Brown</i>) generally rules that you cannot consent to Actual Bodily Harm unless it is in the 'public interest' (like surgery or sports). This raises the question: Does the State own your body, or do you?" 
+        }
     ];
 
     function updateTimer() {
-        const now = new Date();
         const midnight = new Date().setHours(24, 0, 0, 0);
-        const diff = midnight - now;
+        const diff = midnight - new Date();
         const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
         const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
         const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
@@ -144,27 +165,31 @@
 
     function rotateAcademy() {
         const item = academyData[Math.floor(Math.random() * academyData.length)];
-        const container = document.getElementById('academy-container');
-        container.innerHTML = `
+        const soc = socraticData[Math.floor(Math.random() * socraticData.length)];
+        
+        document.getElementById('academy-container').innerHTML = `
             <div class="academy-item">
-                <div class="academy-header" onclick="this.nextElementSibling.style.display='block'">
-                    <span>${item.title}</span> <span>[READ ANALYSIS]</span>
+                <div class="academy-header" onclick="toggleDisplay('academy-content')">
+                    <span><span class="case-tag">PRECEDENT</span> ${item.title}</span> <span>[+]</span>
                 </div>
-                <div class="academy-content">${item.content}</div>
+                <div id="academy-content" class="academy-content">${item.content}</div>
             </div>
         `;
-        document.getElementById('socratic-question').innerText = socraticData[Math.floor(Math.random() * socraticData.length)];
+        document.getElementById('socratic-question').innerText = soc.q;
+        document.getElementById('socratic-answer').innerHTML = soc.a;
+        document.getElementById('socratic-answer').style.display = 'none';
     }
 
-    function toggleSocratic() {
-        const ans = document.getElementById('socratic-answer');
-        ans.style.display = 'block';
-        ans.innerText = "Challenge your assumptions. In Law, there is rarely a single truth—only the most persuasive argument built on precedent and logic.";
+    function toggleDisplay(id) {
+        const el = document.getElementById(id);
+        el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
+
+    function toggleSocratic() { toggleDisplay('socratic-answer'); }
 
     function saveVault() {
-        const title = document.getElementById('vault-title-input').value;
-        const note = document.getElementById('vault-note-input').value;
+        const title = document.getElementById('v-title').value;
+        const note = document.getElementById('v-note').value;
         if(title && note) {
             document.getElementById('vault-output').style.display = 'block';
             document.getElementById('out-title').innerText = title.toUpperCase();
@@ -183,8 +208,8 @@
             localStorage.setItem('streak', streak);
             localStorage.setItem('last_auth', today);
             document.getElementById('streakCount').innerText = streak;
-            alert("Streak Updated!");
-        } else { alert("Complete all habits first."); }
+            alert("The day is secure. Your streak has increased.");
+        } else { alert("Complete all habits before authentication."); }
     }
 
     setInterval(updateTimer, 1000);

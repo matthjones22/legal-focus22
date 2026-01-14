@@ -3,45 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence OS | Legal & Scientific Sovereign</title>
+    <title>Intelligence OS | Elite Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #020617; --card: #0f172a; --gold: #d4af37; --text: #f8fafc; --dim: #94a3b8; --accent: #1e293b; --success: #10b981; }
+        :root { --bg: #05070a; --card: #0f172a; --gold: #d4af37; --text: #f8fafc; --dim: #94a3b8; --accent: #1e293b; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; }
         .container { width: 95%; max-width: 1400px; padding: 40px 0; }
         
         header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; border-bottom: 1px solid var(--accent); padding-bottom: 20px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin: 0; color: var(--gold); letter-spacing: -1px; }
-        .streak-num { font-size: 3.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin: 0; color: var(--gold); }
+        .timer-box { text-align: right; color: var(--gold); font-family: monospace; }
 
         .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        .card { background: var(--card); border-radius: 16px; padding: 30px; border: 1px solid var(--accent); margin-bottom: 25px; transition: 0.3s; }
-        h2 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.4rem; margin-top: 0; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .card { background: var(--card); border-radius: 16px; padding: 30px; border: 1px solid var(--accent); margin-bottom: 25px; }
+        h2 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.4rem; margin-top: 0; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; display: flex; justify-content: space-between; align-items: center;}
 
-        /* Headlines Section */
+        /* Headlines */
         .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .news-item { padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.03); margin-bottom: 10px; border-left: 3px solid var(--gold); }
-        .news-item a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.95rem; line-height: 1.4; display: block; }
-        .news-item a:hover { color: var(--gold); }
-        .news-tag { font-size: 0.65rem; color: var(--gold); font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 4px; }
+        .news-item a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: block; }
 
-        /* Interactive Academy */
-        .academy-item { background: var(--accent); border-radius: 8px; margin-bottom: 15px; cursor: pointer; overflow: hidden; border: 1px solid transparent; }
-        .academy-item:hover { border-color: var(--gold); }
-        .academy-header { padding: 15px; font-weight: 700; color: var(--gold); display: flex; justify-content: space-between; align-items: center; }
-        .academy-content { padding: 0 15px 15px 15px; display: none; color: var(--dim); font-size: 0.9rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; }
+        /* Academy & Socratic */
+        .academy-item { background: var(--accent); border-radius: 8px; margin-bottom: 15px; border: 1px solid transparent; }
+        .academy-header { padding: 15px; font-weight: 700; color: var(--gold); cursor: pointer; display: flex; justify-content: space-between; }
+        .academy-content { padding: 15px; display: none; color: var(--dim); border-top: 1px solid rgba(255,255,255,0.05); line-height: 1.6; }
 
-        /* Socratic Challenge */
-        .socratic-card { background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid var(--gold); }
-        .socratic-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 10px 20px; border-radius: 4px; cursor: pointer; margin-top: 15px; font-weight: 600; }
-        .socratic-explanation { margin-top: 20px; display: none; padding-top: 15px; border-top: 1px solid rgba(212,175,55,0.3); }
+        /* Vault Formatting */
+        .vault-display { margin-top: 20px; padding: 20px; background: var(--bg); border-radius: 8px; border: 1px solid var(--gold); }
+        .vault-title { color: var(--gold); font-weight: 700; font-size: 1.1rem; border-bottom: 1px solid var(--accent); padding-bottom: 5px; margin-bottom: 10px; }
+        .vault-text { font-style: italic; color: var(--text); }
 
-        /* Habits */
-        .habit-item { display: flex; align-items: center; margin-bottom: 15px; background: var(--accent); padding: 15px; border-radius: 10px; }
-        .habit-item input { width: 20px; height: 20px; margin-right: 15px; accent-color: var(--gold); cursor: pointer; }
-        .auth-btn { background: var(--gold); color: var(--bg); border: none; width: 100%; padding: 20px; border-radius: 10px; font-weight: 900; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
-        .auth-btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
-
+        /* Buttons */
+        .refresh-btn { font-size: 0.7rem; background: var(--gold); color: var(--bg); border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: 800; }
+        .auth-btn { background: var(--gold); color: var(--bg); border: none; width: 100%; padding: 20px; border-radius: 10px; font-weight: 900; cursor: pointer; }
+        
         @media (max-width: 1000px) { .main-grid, .news-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -50,145 +45,158 @@
 <div class="container">
     <header>
         <div>
-            <div style="color: var(--dim); letter-spacing: 3px; font-size: 0.7rem; text-transform: uppercase;">The Polymath Protocol</div>
+            <div style="color: var(--dim); letter-spacing: 3px; font-size: 0.7rem;">POLYMATH INTELLIGENCE</div>
             <h1>Cognitive Prime</h1>
         </div>
-        <div style="text-align:right">
-            <span class="streak-num" id="streakDisplay">0</span><br>
-            <span style="font-size: 0.7rem; color: var(--dim); letter-spacing: 1px;">CALENDAR STREAK</span>
+        <div class="timer-box">
+            <div id="update-timer">00:00:00</div>
+            <div style="font-size: 0.6rem; letter-spacing: 1px;">UNTIL DATA RESET</div>
         </div>
     </header>
 
     <div class="main-grid">
         <div class="left-col">
             <div class="card">
-                <h2>Intelligence Briefing: Jan 14, 2026</h2>
+                <h2>Intelligence Briefing <button class="refresh-btn" onclick="location.reload()">REFRESH</button></h2>
                 <div class="news-grid">
                     <div>
-                        <h3 style="font-size:0.9rem; color:var(--dim); margin-bottom:15px;">⚖️ LEGAL & COMMERCIAL</h3>
-                        <div class="news-item"><span class="news-tag">Case Law</span><a href="https://www.supremecourt.uk/decisions/index.html">Supreme Court Decision: Property Rights in the Digital Age</a></div>
-                        <div class="news-item"><span class="news-tag">Regulation</span><a href="https://www.lawgazette.co.uk/">SRA Updates: New Compliance Standards for 2026</a></div>
-                        <div class="news-item"><span class="news-tag">M&A</span><a href="https://www.ft.com/legal-industry">The Impact of Interest Rates on Corporate Mergers</a></div>
-                        <div class="news-item"><span class="news-tag">Technology</span><a href="https://www.legalcheek.com/">AI Law: Who is liable for a hallucinating LLM?</a></div>
-                        <div class="news-item"><span class="news-tag">Policy</span><a href="https://www.theguardian.com/law">Justice Reform: The Debate over Legal Aid Funding</a></div>
+                        <h3 style="font-size:0.8rem; color:var(--dim);">⚖️ LEGAL DIRECTORY</h3>
+                        <div class="news-item"><a href="https://www.lawgazette.co.uk/news" target="_blank">Law Gazette: Daily News</a></div>
+                        <div class="news-item"><a href="https://www.supremecourt.uk/news/index.html" target="_blank">Supreme Court Decisions</a></div>
+                        <div class="news-item"><a href="https://www.thelawyer.com/" target="_blank">The Lawyer: Commercial Awareness</a></div>
+                        <div class="news-item"><a href="https://www.legalcheek.com/" target="_blank">Legal Cheek: Education News</a></div>
+                        <div class="news-item"><a href="https://www.judiciary.uk/judgments/" target="_blank">Courts and Tribunals Judgments</a></div>
                     </div>
                     <div>
-                        <h3 style="font-size:0.9rem; color:var(--dim); margin-bottom:15px;">🔬 HUMAN & SCIENTIFIC</h3>
-                        <div class="news-item"><span class="news-tag">Behavior</span><a href="https://www.scientificamerican.com/">Neuroscience: The Chemistry of Habit Formation</a></div>
-                        <div class="news-item"><span class="news-tag">Complexity</span><a href="https://www.quantamagazine.org/">Quantum Logic: Why the Universe is Non-Linear</a></div>
-                        <div class="news-item"><span class="news-tag">Cognition</span><a href="https://www.nature.com/">Memory Systems: How Focus Alters Neural Pathways</a></div>
-                        <div class="news-item"><span class="news-tag">Evolution</span><a href="https://www.smithsonianmag.com/">The Biology of Cooperation vs. Competition</a></div>
-                        <div class="news-item"><span class="news-tag">Physics</span><a href="https://phys.org/">New Discoveries in Dark Matter Distribution</a></div>
+                        <h3 style="font-size:0.8rem; color:var(--dim);">🔬 SCIENTIFIC DISCOVERY</h3>
+                        <div class="news-item"><a href="https://www.nature.com/news" target="_blank">Nature: Research Journal</a></div>
+                        <div class="news-item"><a href="https://www.scientificamerican.com/behavior/" target="_blank">Behavioral Science Briefings</a></div>
+                        <div class="news-item"><a href="https://www.quantamagazine.org/" target="_blank">Quanta: Mathematical Logic</a></div>
+                        <div class="news-item"><a href="https://phys.org/" target="_blank">Phys.org: Science News</a></div>
+                        <div class="news-item"><a href="https://www.newscientist.com/" target="_blank">New Scientist Updates</a></div>
                     </div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>The Legal Academy</h2>
-                <div class="academy-item" onclick="toggleAcademy(this)">
-                    <div class="academy-header"><span>Ratio Decidendi vs. Obiter Dicta</span> <span>+</span></div>
-                    <div class="academy-content">
-                        <strong>Ratio Decidendi:</strong> The legal reason for a judge's decision. This creates the "binding" element of precedent for lower courts.<br><br>
-                        <strong>Obiter Dicta:</strong> "Things said by the way." Opinions or remarks that are not central to the decision. They are <i>persuasive</i> but not binding.
+                <h2>Legal Academy <button class="refresh-btn" onclick="rotateAcademy()">NEW CONCEPT</button></h2>
+                <div id="academy-container">
                     </div>
-                </div>
-                <div class="academy-item" onclick="toggleAcademy(this)">
-                    <div class="academy-header"><span>Stare Decisis: The Doctrine of Precedent</span> <span>+</span></div>
-                    <div class="academy-content">
-                        This is the cornerstone of English Law. It means "to stand by things decided." It ensures certainty and consistency by requiring courts to follow decisions made by higher courts in similar cases.
-                    </div>
-                </div>
-                <div class="academy-item" onclick="toggleAcademy(this)">
-                    <div class="academy-header"><span>Donoghue v Stevenson [1932]</span> <span>+</span></div>
-                    <div class="academy-content">
-                        <strong>The Fact:</strong> A woman found a decomposed snail in her ginger beer and fell ill. <br>
-                        <strong>The Ruling:</strong> Lord Atkin established the 'Neighbour Principle'—you must take reasonable care to avoid acts which you can reasonably foresee would be likely to injure your neighbor.
-                    </div>
-                </div>
             </div>
 
-            <div class="card socratic-card">
+            <div class="card" style="border: 1px solid var(--gold);">
                 <h2>Socratic Challenge</h2>
-                <p style="font-style:italic; font-size:1.2rem;">"If a robot is given legal personhood (like a corporation), can it be held criminally liable for 'murder' if it malfunctions?"</p>
-                <button class="socratic-btn" onclick="toggleSocratic()">Explore Legal Perspectives</button>
-                <div id="socraticContent" class="socratic-explanation">
-                    <p><strong>The Proponent View:</strong> If a corporation can be fined for manslaughter, an AI entity should be subject to legal penalties (fines or termination) to ensure corporate accountability.</p>
-                    <p><strong>The Opponent View:</strong> Criminal law requires <i>Mens Rea</i> (a guilty mind). Since a robot lacks consciousness or intent, it cannot meet the requirements for a criminal conviction.</p>
-                </div>
+                <p id="socratic-question" style="font-style:italic; font-size:1.1rem;"></p>
+                <div id="socratic-answer" style="display:none; padding-top:15px; border-top: 1px solid var(--accent); color:var(--dim);"></div>
+                <button class="refresh-btn" style="margin-top:15px;" onclick="toggleSocratic()">EXPLORE LOGIC</button>
             </div>
         </div>
 
         <div class="right-col">
             <div class="card">
                 <h2>Habit Authentication</h2>
-                <div class="habit-item"><input type="checkbox" class="task"> 1h Music Undergraduate Work</div>
-                <div class="habit-item"><input type="checkbox" class="task"> 1h Non-Fiction Immersion</div>
-                <div class="habit-item"><input type="checkbox" class="task"> Kinetic Reset (Walk)</div>
-                <div class="habit-item"><input type="checkbox" class="task"> No Instagram Reels / TikTok</div>
-                <div class="habit-item"><input type="checkbox" class="task"> Intelligence Hub Briefing</div>
-                <button class="auth-btn" onclick="authenticateDay()">AUTHENTICATE DAY</button>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Music Undergraduate Work</div>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Non-Fiction Reading (1hr)</div>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Kinetic Reset (Lunch Walk)</div>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> No Reels / Social Media</div>
+                <div style="margin-bottom:15px;"><input type="checkbox" class="task"> Intelligence Hub Briefing</div>
+                <button class="auth-btn" onclick="authDay()">AUTHENTICATE STREAK</button>
+                <div style="text-align:center; margin-top:10px; font-weight:bold; color:var(--gold);">STREAK: <span id="streakCount">0</span></div>
             </div>
 
             <div class="card">
                 <h2>Insight Vault</h2>
-                <input type="text" id="bookTitle" placeholder="Non-Fiction Title...">
-                <textarea id="insightInput" placeholder="Synthesize one core insight..."></textarea>
-                <button onclick="saveInsight()" style="width:100%; background:var(--accent); color:var(--gold); border:1px solid var(--gold); padding:10px; cursor:pointer;">DEPOSIT</button>
-                <div id="vaultDisplay" style="margin-top:20px; font-size:0.9rem; color:var(--dim); font-style:italic; border-left: 2px solid var(--gold); padding-left:10px;"></div>
+                <input type="text" id="vault-title-input" placeholder="Book Title...">
+                <textarea id="vault-note-input" style="width:100%; height:80px; background:var(--bg); color:white; border:1px solid var(--accent); padding:10px;" placeholder="Core Insight..."></textarea>
+                <button class="refresh-btn" style="width:100%; padding:10px; margin-top:10px;" onclick="saveVault()">DEPOSIT TO VAULT</button>
+                <div id="vault-output" class="vault-display" style="display:none;">
+                    <div id="out-title" class="vault-title"></div>
+                    <div id="out-text" class="vault-text"></div>
+                </div>
             </div>
         </div>
     </div>
-
-    <footer>
-        <div style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--gold); text-align: center;">"The law is a profession of words; use them wisely."</div>
-        <div style="font-size: 0.8rem; color: var(--dim); margin-top: 10px; text-align: center;">— David Mellinkoff, 1963</div>
-    </footer>
 </div>
 
 <script>
-    // INTERACTIVE ACADEMY
-    function toggleAcademy(el) {
-        const content = el.querySelector('.academy-content');
-        const isVisible = content.style.display === 'block';
-        content.style.display = isVisible ? 'none' : 'block';
-        el.style.borderColor = isVisible ? 'transparent' : '#d4af37';
+    const academyData = [
+        { title: "R v Dudley and Stephens (1884)", content: "The leading case on the defense of 'Necessity'. Two sailors killed and ate a cabin boy to survive a shipwreck. The court ruled that necessity is not a defense to murder. Precedent: You cannot take a life to save your own." },
+        { title: "The Rule of Law", content: "A principle defined by A.V. Dicey. It states that no one is above the law, and that legal principles should be clear, publicized, and stable. This prevents arbitrary government power." },
+        { title: "Equity and Trusts", content: "Equity was developed to soften the 'harshness' of Common Law. It follows the maxim 'Equity will not suffer a wrong to be without a remedy.' Crucial for understanding modern property law." },
+        { title: "Contract: Carlill v Carbolic Smoke Ball Co", content: "Established that an advertisement can constitute an 'offer' if it is specific enough, and that 'acceptance' can be by conduct (using the smoke ball). It defined the elements of a binding contract." }
+    ];
+
+    const socraticData = [
+        "Is an unjust law still a law? (Think about Natural Law vs. Legal Positivism).",
+        "If an AI creates a piece of music, who owns the copyright: The coder, the AI, or the user?",
+        "Can freedom of speech truly exist if it causes psychological harm to others?"
+    ];
+
+    function updateTimer() {
+        const now = new Date();
+        const midnight = new Date().setHours(24, 0, 0, 0);
+        const diff = midnight - now;
+        const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
+        const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+        const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+        document.getElementById('update-timer').innerText = `${h}:${m}:${s}`;
     }
 
-    // SOCRATIC CHALLENGE
+    function rotateAcademy() {
+        const item = academyData[Math.floor(Math.random() * academyData.length)];
+        const container = document.getElementById('academy-container');
+        container.innerHTML = `
+            <div class="academy-item">
+                <div class="academy-header" onclick="this.nextElementSibling.style.display='block'">
+                    <span>${item.title}</span> <span>[READ ANALYSIS]</span>
+                </div>
+                <div class="academy-content">${item.content}</div>
+            </div>
+        `;
+        document.getElementById('socratic-question').innerText = socraticData[Math.floor(Math.random() * socraticData.length)];
+    }
+
     function toggleSocratic() {
-        const content = document.getElementById('socraticContent');
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        const ans = document.getElementById('socratic-answer');
+        ans.style.display = 'block';
+        ans.innerText = "Challenge your assumptions. In Law, there is rarely a single truth—only the most persuasive argument built on precedent and logic.";
     }
 
-    // STREAK LOGIC
-    function authenticateDay() {
-        const today = new Date().toDateString();
-        const lastDate = localStorage.getItem('lastAuthDate');
+    function saveVault() {
+        const title = document.getElementById('vault-title-input').value;
+        const note = document.getElementById('vault-note-input').value;
+        if(title && note) {
+            document.getElementById('vault-output').style.display = 'block';
+            document.getElementById('out-title').innerText = title.toUpperCase();
+            document.getElementById('out-text').innerText = `"${note}"`;
+            localStorage.setItem('v_title', title);
+            localStorage.setItem('v_note', note);
+        }
+    }
+
+    function authDay() {
         const tasks = document.querySelectorAll('.task');
-        const allDone = Array.from(tasks).every(t => t.checked);
-
-        if (!allDone) return alert("Complete the checklist first.");
-        if (lastDate === today) return alert("Already authenticated for today.");
-
-        let streak = parseInt(localStorage.getItem('streakCount') || 0) + 1;
-        localStorage.setItem('streakCount', streak);
-        localStorage.setItem('lastAuthDate', today);
-        document.getElementById('streakDisplay').innerText = streak;
-        alert("Day Authenticated! Streak: " + streak);
+        if(Array.from(tasks).every(t => t.checked)) {
+            const today = new Date().toDateString();
+            if(localStorage.getItem('last_auth') === today) return alert("Already authenticated.");
+            let streak = parseInt(localStorage.getItem('streak') || 0) + 1;
+            localStorage.setItem('streak', streak);
+            localStorage.setItem('last_auth', today);
+            document.getElementById('streakCount').innerText = streak;
+            alert("Streak Updated!");
+        } else { alert("Complete all habits first."); }
     }
 
-    // VAULT
-    function saveInsight() {
-        const note = document.getElementById('bookTitle').value + ": " + document.getElementById('insightInput').value;
-        localStorage.setItem('storedInsight', note);
-        document.getElementById('vaultDisplay').innerText = note;
-    }
-
+    setInterval(updateTimer, 1000);
     window.onload = () => {
-        document.getElementById('streakDisplay').innerText = localStorage.getItem('streakCount') || 0;
-        document.getElementById('vaultDisplay').innerText = localStorage.getItem('storedInsight') || "Vault empty.";
-    }
+        rotateAcademy();
+        document.getElementById('streakCount').innerText = localStorage.getItem('streak') || 0;
+        if(localStorage.getItem('v_title')) {
+            document.getElementById('vault-output').style.display = 'block';
+            document.getElementById('out-title').innerText = localStorage.getItem('v_title').toUpperCase();
+            document.getElementById('out-text').innerText = `"${localStorage.getItem('v_note')}"`;
+        }
+    };
 </script>
-
 </body>
 </html>
